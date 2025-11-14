@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(OpenGL_C LANGUAGES C)
+project(aplicacao_interativa LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 

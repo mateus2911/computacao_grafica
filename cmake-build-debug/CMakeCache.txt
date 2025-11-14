@@ -128,7 +128,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=OpenGL_C
+CMAKE_PROJECT_NAME:STATIC=aplicacao_interativa
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Program Files/JetBrains/CLion 2024.2.1/bin/mingw/bin/ranlib.exe
@@ -227,6 +227,15 @@ OpenGL_C_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 OpenGL_C_SOURCE_DIR:STATIC=C:/Users/Giovanna/Downloads/Pratica/teste
+
+//Value Computed by CMake
+aplicacao_interativa_BINARY_DIR:STATIC=C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug
+
+//Value Computed by CMake
+aplicacao_interativa_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+aplicacao_interativa_SOURCE_DIR:STATIC=C:/Users/Giovanna/Downloads/Pratica/teste
 
 //Value Computed by CMake
 teste_BINARY_DIR:STATIC=C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug

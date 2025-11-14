@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: OpenGL_C
+# Project: aplicacao_interativa
 # Configurations: Debug
 # =============================================================================
 
@@ -41,39 +41,39 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target OpenGL_C
+# Object build statements for EXECUTABLE target aplicacao_interativa
 
 
 #############################################
-# Order-only phony target for OpenGL_C
+# Order-only phony target for aplicacao_interativa
 
-build cmake_object_order_depends_target_OpenGL_C: phony || .
+build cmake_object_order_depends_target_aplicacao_interativa: phony || .
 
-build CMakeFiles/OpenGL_C.dir/main.c.obj: C_COMPILER__OpenGL_C_unscanned_Debug C$:/Users/Giovanna/Downloads/Pratica/teste/main.c || cmake_object_order_depends_target_OpenGL_C
-  DEP_FILE = CMakeFiles\OpenGL_C.dir\main.c.obj.d
+build CMakeFiles/aplicacao_interativa.dir/main.c.obj: C_COMPILER__aplicacao_interativa_unscanned_Debug C$:/Users/Giovanna/Downloads/Pratica/teste/main.c || cmake_object_order_depends_target_aplicacao_interativa
+  DEP_FILE = CMakeFiles\aplicacao_interativa.dir\main.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/Giovanna/Downloads/Pratica/teste/freeglut/include
-  OBJECT_DIR = CMakeFiles\OpenGL_C.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL_C.dir
+  OBJECT_DIR = CMakeFiles\aplicacao_interativa.dir
+  OBJECT_FILE_DIR = CMakeFiles\aplicacao_interativa.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target OpenGL_C
+# Link build statements for EXECUTABLE target aplicacao_interativa
 
 
 #############################################
-# Link the executable OpenGL_C.exe
+# Link the executable aplicacao_interativa.exe
 
-build OpenGL_C.exe: C_EXECUTABLE_LINKER__OpenGL_C_Debug CMakeFiles/OpenGL_C.dir/main.c.obj
+build aplicacao_interativa.exe: C_EXECUTABLE_LINKER__aplicacao_interativa_Debug CMakeFiles/aplicacao_interativa.dir/main.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lopengl32  -lglu32  -lfreeglut  -lopengl32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/Giovanna/Downloads/Pratica/teste/freeglut/lib/x64
-  OBJECT_DIR = CMakeFiles\OpenGL_C.dir
+  OBJECT_DIR = CMakeFiles\aplicacao_interativa.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Giovanna\Downloads\Pratica\teste\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E copy_if_different C:/Users/Giovanna/Downloads/Pratica/teste/freeglut/bin/x64/freeglut.dll C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug/"
   PRE_LINK = cd .
-  TARGET_FILE = OpenGL_C.exe
-  TARGET_IMPLIB = libOpenGL_C.dll.a
-  TARGET_PDB = OpenGL_C.exe.dbg
+  TARGET_FILE = aplicacao_interativa.exe
+  TARGET_IMPLIB = libaplicacao_interativa.dll.a
+  TARGET_PDB = aplicacao_interativa.exe.dbg
 
 
 #############################################
@@ -101,7 +101,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build OpenGL_C: phony OpenGL_C.exe
+build aplicacao_interativa: phony aplicacao_interativa.exe
 
 # =============================================================================
 # Folder targets.
@@ -111,7 +111,7 @@ build OpenGL_C: phony OpenGL_C.exe
 #############################################
 # Folder: C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug
 
-build all: phony OpenGL_C.exe
+build all: phony aplicacao_interativa.exe
 
 # =============================================================================
 # Built-in targets
