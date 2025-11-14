@@ -1,0 +1,3 @@
+C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug/CMakeFiles/aplicacao_interativa.dir
+C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Giovanna/Downloads/Pratica/teste/cmake-build-debug/CMakeFiles/rebuild_cache.dir
