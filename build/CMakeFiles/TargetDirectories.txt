@@ -1,0 +1,3 @@
+/home/mateus/Documentos/GitHub/computacao_grafica/build/CMakeFiles/Meteor_Runner.dir
+/home/mateus/Documentos/GitHub/computacao_grafica/build/CMakeFiles/edit_cache.dir
+/home/mateus/Documentos/GitHub/computacao_grafica/build/CMakeFiles/rebuild_cache.dir

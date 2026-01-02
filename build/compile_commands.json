@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/mateus/Documentos/GitHub/computacao_grafica/build",
+  "command": "/usr/bin/clang -I/home/mateus/Documentos/GitHub/computacao_grafica/freeglut/include -g -std=gnu99 -o CMakeFiles/Meteor_Runner.dir/main.c.o -c /home/mateus/Documentos/GitHub/computacao_grafica/main.c",
+  "file": "/home/mateus/Documentos/GitHub/computacao_grafica/main.c"
+}
+]
