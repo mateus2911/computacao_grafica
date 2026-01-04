@@ -16,11 +16,20 @@ find_package(GLUT REQUIRED)
 # === Caminhos do freeglut (RELATIVOS AO PROJETO) ===
 set(FREEGLUT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/freeglut")
 include_directories("${FREEGLUT_ROOT}/include")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 link_directories("${FREEGLUT_ROOT}/lib/x64")
 
+# === Arquivos fonte ===
+set(SOURCES
+    src/main.c
+    src/assets.c
+    src/player.c
+    src/scene.c
+    src/camera.c
+)
+
 # === Executável ===
-add_executable(${PROJECT_NAME} main.c
-        freeglut/include/GL/freeglut_ext.h)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # === Linkar bibliotecas (cross-platform) ===
 if (WIN32)
@@ -56,4 +65,7 @@ else()
         target_link_libraries(${PROJECT_NAME} PRIVATE ${GLUT_LIBRARIES})
         include_directories(${GLUT_INCLUDE_DIRS})
     endif()
+
+    # === Link GLU (resolve gluLookAt, gluPerspective) ===
+    target_link_libraries(${PROJECT_NAME} PRIVATE GLU m)
 endif()
