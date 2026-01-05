@@ -1,6 +1,7 @@
-CMakeFiles/Meteor_Runner.dir/src/main.c.o: \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/main.c \
+CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o: \
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/meteoro.c \
  /usr/include/stdc-predef.h \
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/meteoro.h \
  /home/mateus/Documentos/GitHub/computacao_grafica/freeglut/include/GL/glut.h \
  /home/mateus/Documentos/GitHub/computacao_grafica/freeglut/include/GL/freeglut_std.h \
  /usr/include/GL/gl.h /usr/include/GL/glext.h \
@@ -47,9 +48,11 @@ CMakeFiles/Meteor_Runner.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/player.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/scene.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/scene.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/camera.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/player.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/meteoro.h
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/assets.h \
+ /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h

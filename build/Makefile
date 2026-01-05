@@ -201,6 +201,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/meteoro.o: src/meteoro.c.o
+.PHONY : src/meteoro.o
+
+# target to build an object file
+src/meteoro.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o
+.PHONY : src/meteoro.c.o
+
+src/meteoro.i: src/meteoro.c.i
+.PHONY : src/meteoro.i
+
+# target to preprocess a source file
+src/meteoro.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/meteoro.c.i
+.PHONY : src/meteoro.c.i
+
+src/meteoro.s: src/meteoro.c.s
+.PHONY : src/meteoro.s
+
+# target to generate assembly for a file
+src/meteoro.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/meteoro.c.s
+.PHONY : src/meteoro.c.s
+
 src/player.o: src/player.c.o
 .PHONY : src/player.o
 
@@ -267,6 +291,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/meteoro.o"
+	@echo "... src/meteoro.i"
+	@echo "... src/meteoro.s"
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"

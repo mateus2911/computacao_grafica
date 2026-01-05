@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Meteor_Runner.dir/src/camera.c.o.d"
   "CMakeFiles/Meteor_Runner.dir/src/main.c.o"
   "CMakeFiles/Meteor_Runner.dir/src/main.c.o.d"
+  "CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o"
+  "CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o.d"
   "CMakeFiles/Meteor_Runner.dir/src/player.c.o"
   "CMakeFiles/Meteor_Runner.dir/src/player.c.o.d"
   "CMakeFiles/Meteor_Runner.dir/src/scene.c.o"

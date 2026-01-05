@@ -48,6 +48,7 @@ CMakeFiles/Meteor_Runner.dir/src/player.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/scene.h \
  /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/assets.h \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

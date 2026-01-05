@@ -26,6 +26,7 @@ set(SOURCES
     src/player.c
     src/scene.c
     src/camera.c
+    src/meteoro.c
 )
 
 # === Executável ===

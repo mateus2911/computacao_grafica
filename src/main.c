@@ -7,6 +7,7 @@
 #include "../include/player.h"
 #include "../include/scene.h"
 #include "../include/camera.h"
+#include "../include/meteoro.h"
 
 // ============================================
 // VARIÁVEIS GLOBAIS (agora organizadas em structs)
@@ -15,6 +16,8 @@ Player gPlayer;
 Scene gScene;
 Camera gCamera;
 int gChaves[256];
+Meteoro* gVetorMeteoros;
+int gNumMeteoros = 10;
 
 
 // ============================================
@@ -23,7 +26,7 @@ int gChaves[256];
 
 void display() {
     // Atualiza a lógica do jogador
-    player_update(&gPlayer, gChaves);
+    player_update(&gPlayer, gChaves, &gScene);
 
     // Limpa os buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -32,11 +35,24 @@ void display() {
     // Aplica a câmera
     camera_aplicar(&gCamera, &gPlayer);
 
-    // Desenha a cena
+    // Atualiza meteoros primeiro
+    meteoros_update(gVetorMeteoros, gNumMeteoros);
+    
+    // Desenha os alvos no chão ANTES do terreno
+    for (int i = 0; i < gNumMeteoros; i++) {
+        alvo_draw(&gVetorMeteoros[i]);
+    }
+
+    // Desenha a cena (terreno)
     scene_draw(&gScene);
 
     // Desenha o jogador
     player_draw(&gPlayer);
+
+    // Desenha os meteoros (esferas no ar)
+    for (int i = 0; i < gNumMeteoros; i++) {
+        meteoro_draw(&gVetorMeteoros[i]);
+    }
 
     // Troca os buffers
     glutSwapBuffers();
@@ -95,6 +111,10 @@ void init() {
     // Habilita teste de profundidade
     glEnable(GL_DEPTH_TEST);
     
+    // Habilita blending para transparência dos meteoros
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     // Desabilita iluminação para mostrar cores naturais das texturas
     glDisable(GL_LIGHTING);
 
@@ -102,6 +122,7 @@ void init() {
     player_init(&gPlayer, "../personagem.jpg", "../personagem.obj");
     scene_init(&gScene, "../grama.jpg");
     camera_init(&gCamera);
+    gVetorMeteoros = meteoros_init(gNumMeteoros);
     
     // Zera o vetor de teclas
     for (int i = 0; i < 256; i++) {

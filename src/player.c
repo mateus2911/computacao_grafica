@@ -18,7 +18,7 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
 }
 
 
-void player_update(Player* p, int* chaves) {
+void player_update(Player* p, int* chaves, Scene* cena) {
     float radianos = p->rotY * (PI / 180.0f);
 
     // Movimento para frente (W)
@@ -42,6 +42,11 @@ void player_update(Player* p, int* chaves) {
     if (chaves['d']) {
         p->rotY -= p->rotVel;
     }
+
+    if(p->x > cena->tamanho) p->x = cena->tamanho;
+    if(p->x < -cena->tamanho) p->x = -cena->tamanho;
+    if(p->z > cena->tamanho) p->z = cena->tamanho;
+    if(p->z < -cena->tamanho) p->z = -cena->tamanho;
 }
 
 

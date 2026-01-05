@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/mateus/Documentos/GitHub/computacao_grafica/freeglut/include -I/home/mateus/Documentos/GitHub/computacao_grafica/include
 
-C_FLAGS = -g -std=gnu99
+C_FLAGS = -std=gnu99
 

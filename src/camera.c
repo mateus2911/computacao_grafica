@@ -23,7 +23,7 @@ void camera_aplicar(Camera* c, Player* p) {
         gluLookAt(
             0.0f, 80.0f, 0.0f,          // Posição da câmera (bem alto)
             p->x, 0.0f, p->z,           // Olha para o jogador
-            0.0f, 0.0f, -1.0f           // Vetor UP ajustado para visão de cima
+            0.0f, 1.0f, 0.0f           // Vetor UP ajustado para visão de cima
         );
     } else {
         // Modo 1: Terceira pessoa (segue o jogador)
