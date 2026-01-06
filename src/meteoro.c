@@ -1,7 +1,11 @@
 #include "../include/meteoro.h"
 #include "../include/assets.h"
+#include "../include/player.h" 
 #include <math.h>
 #include <stdlib.h>
+#include "../include/pontuacao.h"
+
+extern Pontuacao gPontuacao;
 
 
 Meteoro * meteoros_init(int numMeteoros){
@@ -14,6 +18,7 @@ Meteoro * meteoros_init(int numMeteoros){
         vetor_meteoros[i].z = rand() % 100 - 50; //Posição aleatória entre -50 e 50
         vetor_meteoros[i].velocidade = 0.8f; 
         vetor_meteoros[i].estado = 1; //Ativo
+        vetor_meteoros[i].hitboxRaio = METEORO_RAIO_HITBOX;
     }
 
     return vetor_meteoros;
@@ -59,7 +64,7 @@ void meteoro_draw(Meteoro* m){
             glColor3f(1.0f, 0.5f, 0.0f);    // Cor laranja/vermelha com transparência
         
             // Raio 2.0, 20 fatias, 20 pilhas
-            glutSolidSphere(2.0, 20, 20);
+            glutSolidSphere(m->hitboxRaio + METEORO_RAIO_VISUAL, 20, 20);
 
             
 
@@ -74,7 +79,7 @@ void alvo_draw(Meteoro* m){
         
         // Desabilita textura para desenhar com cor sólida
         glDisable(GL_TEXTURE_2D);
-        glDisable(GL_LIGHTING);
+        //glDisable(GL_LIGHTING);
         
         // Usa polygon offset para evitar z-fighting com o terreno
         glEnable(GL_POLYGON_OFFSET_FILL);
@@ -135,14 +140,34 @@ void alvo_draw(Meteoro* m){
     }
 }
 
-void meteoros_update(Meteoro* vetor_meteoros, int numMeteoros){
+void meteoros_update(Meteoro* vetor_meteoros, int numMeteoros, Player* p){
 
     for(int i = 0; i<numMeteoros; i++){
         if(vetor_meteoros[i].estado == 1){
             vetor_meteoros[i].y -= vetor_meteoros[i].velocidade * 0.1f; //Atualiza a posição Y do meteoro
 
+            //Verifica colisão com o jogador
+            float raioSoma = vetor_meteoros[i].hitboxRaio + p->hitboxRaio;
+            float limiteAoQuadrado = raioSoma * raioSoma;
+
+            
+            float dx = vetor_meteoros[i].x - p->x;
+            float dy = vetor_meteoros[i].y - 0.0f; // Altura do jogador é 0 no eixo Y
+            float dz = vetor_meteoros[i].z - p->z;
+            
+
+            float distanciaAoQuadrado = (dx * dx) + (dy * dy) + (dz * dz);
+
+            if(distanciaAoQuadrado <= limiteAoQuadrado){
+                //Colisão detectada
+                printf("Colisão com meteoro!\n");
+                pontuacao_colisao(&gPontuacao);
+                reinicia_meteoro(&vetor_meteoros[i]);
+            }
             //Se o meteoro atingir o chão, reinicia ele
             if(vetor_meteoros[i].y <= 0.0f){
+                printf("Meteoro desviado!\n");
+                pontuacao_meteoro_desviado(&gPontuacao);
                 reinicia_meteoro(&vetor_meteoros[i]);
             }
         }

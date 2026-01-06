@@ -222,7 +222,17 @@ CMakeFiles/Meteor_Runner.dir/src/main.c.o: ../src/main.c \
   ../include/scene.h \
   ../include/camera.h \
   ../include/player.h \
-  ../include/meteoro.h
+  ../include/meteoro.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  ../include/player.h
 
 CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o: ../src/meteoro.c \
   /usr/include/stdc-predef.h \
@@ -280,7 +290,19 @@ CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o: ../src/meteoro.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  ../include/player.h \
+  ../include/scene.h \
   ../include/assets.h \
+  ../include/player.h \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
   /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -288,7 +310,8 @@ CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o: ../src/meteoro.c \
   /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
   /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
-  /usr/include/x86_64-linux-gnu/bits/mathcalls.h
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  ../include/pontuacao.h
 
 CMakeFiles/Meteor_Runner.dir/src/player.c.o: ../src/player.c \
   /usr/include/stdc-predef.h \
@@ -439,6 +462,8 @@ CMakeFiles/Meteor_Runner.dir/src/scene.c.o: ../src/scene.c \
 /usr/include/assert.h:
 
 ../src/scene.c:
+
+../include/pontuacao.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
 

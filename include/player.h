@@ -4,11 +4,16 @@
 #include <GL/glut.h>
 #include "scene.h"
 
+// Constantes de configuração
+#define PLAYER_RAIO_HITBOX 2.0f
+
+
 typedef struct {
     float x, z;
     float rotY;
     float velocidade;
     float rotVel;
+    float hitboxRaio;
     GLuint idTextura;
     GLuint idModelo;
 } Player;

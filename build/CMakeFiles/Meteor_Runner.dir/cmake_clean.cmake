@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o.d"
   "CMakeFiles/Meteor_Runner.dir/src/player.c.o"
   "CMakeFiles/Meteor_Runner.dir/src/player.c.o.d"
+  "CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.o"
+  "CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.o.d"
   "CMakeFiles/Meteor_Runner.dir/src/scene.c.o"
   "CMakeFiles/Meteor_Runner.dir/src/scene.c.o.d"
   "Meteor_Runner"

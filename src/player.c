@@ -1,5 +1,6 @@
 #include "../include/player.h"
 #include "../include/assets.h"
+
 #include <math.h>
 
 #define PI 3.14159265f
@@ -11,6 +12,7 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
     p->rotY = 0.0f;
     p->velocidade = 0.8f;
     p->rotVel = 5.0f;
+    p->hitboxRaio = PLAYER_RAIO_HITBOX;
     
     // Carrega assets
     p->idTextura = carregaTextura(texturaPath);
@@ -20,6 +22,9 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
 
 void player_update(Player* p, int* chaves, Scene* cena) {
     float radianos = p->rotY * (PI / 180.0f);
+
+
+
 
     // Movimento para frente (W)
     if (chaves['w']) {

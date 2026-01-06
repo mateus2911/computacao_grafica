@@ -8,6 +8,7 @@
 #include "../include/scene.h"
 #include "../include/camera.h"
 #include "../include/meteoro.h"
+#include "../include/pontuacao.h"
 
 // ============================================
 // VARIÁVEIS GLOBAIS (agora organizadas em structs)
@@ -18,11 +19,15 @@ Camera gCamera;
 int gChaves[256];
 Meteoro* gVetorMeteoros;
 int gNumMeteoros = 10;
+Pontuacao gPontuacao;
 
 
 // ============================================
 // CALLBACKS DO GLUT
 // ============================================
+
+
+
 
 void display() {
     // Atualiza a lógica do jogador
@@ -32,11 +37,19 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
+    
+
+
     // Aplica a câmera
     camera_aplicar(&gCamera, &gPlayer);
 
+    // Luz acompanha o jogador (dinâmica)
+    float lightPos[] = {0.0f, 1.0f, 0.0f, 0.0f};  // Luz vindo de cima (Y positivo)
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+
+
     // Atualiza meteoros primeiro
-    meteoros_update(gVetorMeteoros, gNumMeteoros);
+    meteoros_update(gVetorMeteoros, gNumMeteoros, &gPlayer);
     
     // Desenha os alvos no chão ANTES do terreno
     for (int i = 0; i < gNumMeteoros; i++) {
@@ -54,6 +67,9 @@ void display() {
         meteoro_draw(&gVetorMeteoros[i]);
     }
 
+    // Desenha o HUD (placar)
+    pontuacao_desenhar_hud(&gPontuacao);
+
     // Troca os buffers
     glutSwapBuffers();
 }
@@ -70,6 +86,11 @@ void reshape(int w, int h) {
     gluPerspective(45.0f, aspect, 0.1f, 1000.0f);
     glMatrixMode(GL_MODELVIEW);
 }
+
+
+
+
+
 
 
 void tecladoDown(unsigned char key, int x, int y) {
@@ -111,18 +132,38 @@ void init() {
     // Habilita teste de profundidade
     glEnable(GL_DEPTH_TEST);
     
-    // Habilita blending para transparência dos meteoros
+        // Habilita blending para transparência dos meteoros
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    // Desabilita iluminação para mostrar cores naturais das texturas
-    glDisable(GL_LIGHTING);
+    // Configuração de iluminação
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_RESCALE_NORMAL);// Normaliza normais após transformações
+    glEnable(GL_COLOR_MATERIAL);  // Permite usar glColor3f com iluminação
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    
+    // Luz ambiente global (clareia toda a cena)
+    float globalAmbient[] = {0.6f, 0.6f, 0.6f, 1.0f};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
+    
+    // Propriedades da luz principal
+    //float lightPos[] = {0.0f, 100.0f, 0.0f, 1.0f};  // Posição (luz pontual)
+    float lightAmbient[] = {0.2f, 0.2f, 0.2f, 1.0f};  // Luz ambiente
+    float lightDiffuse[] = {0.8f, 0.8f, 0.8f, 1.0f};  // Luz difusa (principal)
+    float lightSpecular[] = {0.2f, 0.2f, 0.2f, 1.0f}; // Luz especular (brilho)
+    
+    //glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
 
     // Inicializa os módulos
     player_init(&gPlayer, "../personagem.jpg", "../personagem.obj");
     scene_init(&gScene, "../grama.jpg");
     camera_init(&gCamera);
     gVetorMeteoros = meteoros_init(gNumMeteoros);
+    pontuacao_init(&gPontuacao);
     
     // Zera o vetor de teclas
     for (int i = 0; i < 256; i++) {

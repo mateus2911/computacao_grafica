@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/mateus/Documentos/GitHub/computacao_grafica/src/main.c" "CMakeFiles/Meteor_Runner.dir/src/main.c.o" "gcc" "CMakeFiles/Meteor_Runner.dir/src/main.c.o.d"
   "/home/mateus/Documentos/GitHub/computacao_grafica/src/meteoro.c" "CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o" "gcc" "CMakeFiles/Meteor_Runner.dir/src/meteoro.c.o.d"
   "/home/mateus/Documentos/GitHub/computacao_grafica/src/player.c" "CMakeFiles/Meteor_Runner.dir/src/player.c.o" "gcc" "CMakeFiles/Meteor_Runner.dir/src/player.c.o.d"
+  "/home/mateus/Documentos/GitHub/computacao_grafica/src/pontuacao.c" "CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.o" "gcc" "CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.o.d"
   "/home/mateus/Documentos/GitHub/computacao_grafica/src/scene.c" "CMakeFiles/Meteor_Runner.dir/src/scene.c.o" "gcc" "CMakeFiles/Meteor_Runner.dir/src/scene.c.o.d"
   )
 

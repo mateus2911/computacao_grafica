@@ -249,6 +249,30 @@ src/player.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/player.c.s
 .PHONY : src/player.c.s
 
+src/pontuacao.o: src/pontuacao.c.o
+.PHONY : src/pontuacao.o
+
+# target to build an object file
+src/pontuacao.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.o
+.PHONY : src/pontuacao.c.o
+
+src/pontuacao.i: src/pontuacao.c.i
+.PHONY : src/pontuacao.i
+
+# target to preprocess a source file
+src/pontuacao.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.i
+.PHONY : src/pontuacao.c.i
+
+src/pontuacao.s: src/pontuacao.c.s
+.PHONY : src/pontuacao.s
+
+# target to generate assembly for a file
+src/pontuacao.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Meteor_Runner.dir/build.make CMakeFiles/Meteor_Runner.dir/src/pontuacao.c.s
+.PHONY : src/pontuacao.c.s
+
 src/scene.o: src/scene.c.o
 .PHONY : src/scene.o
 
@@ -297,6 +321,9 @@ help:
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/pontuacao.o"
+	@echo "... src/pontuacao.i"
+	@echo "... src/pontuacao.s"
 	@echo "... src/scene.o"
 	@echo "... src/scene.i"
 	@echo "... src/scene.s"

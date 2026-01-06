@@ -52,4 +52,13 @@ CMakeFiles/Meteor_Runner.dir/src/main.c.o: \
  /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/scene.h \
  /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/camera.h \
  /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/player.h \
- /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/meteoro.h
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/meteoro.h \
+ /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /home/mateus/Documentos/GitHub/computacao_grafica/src/../include/../include/player.h

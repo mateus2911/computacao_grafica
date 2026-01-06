@@ -15,7 +15,9 @@ SOURCES = $(SRC_DIR)/main.c \
           $(SRC_DIR)/assets.c \
           $(SRC_DIR)/player.c \
           $(SRC_DIR)/scene.c \
-          $(SRC_DIR)/camera.c
+          $(SRC_DIR)/camera.c\
+		  $(SRC_DIR)/meteoro.c \
+		  $(SRC_DIR)/pontuacao.c
 
 # Arquivos objeto
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
