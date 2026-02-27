@@ -18,7 +18,8 @@ Scene gScene;
 Camera gCamera;
 int gChaves[256];
 Meteoro* gVetorMeteoros;
-int gNumMeteoros = 10;
+
+int gNumMeteoros = 20;
 Pontuacao gPontuacao;
 int gUltimoTempoMs = 0;
 
@@ -165,10 +166,10 @@ void init() {
     glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
 
     // Inicializa os módulos
-    player_init(&gPlayer, "../personagem.jpg", "../pato_borracha.obj");
-    scene_init(&gScene, "../grama.jpg");
+    player_init(&gPlayer, "../assets/personagem.jpg", "../assets/pato_borracha.obj");
+    scene_init(&gScene, "../assets/grama.jpg");
     camera_init(&gCamera);
-    gVetorMeteoros = meteoros_init(gNumMeteoros);
+    gVetorMeteoros = meteoros_init(gNumMeteoros, "../assets/10464_Asteroid_v1_diffuse.jpg", "../assets/10464_Asteroid_v1_Iterations-2.obj");
     pontuacao_init(&gPontuacao);
     
     // Zera o vetor de teclas

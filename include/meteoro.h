@@ -6,33 +6,23 @@
 #include <stdio.h>
 #include "../include/player.h"
 
-// Constantes de configuração
-#define METEORO_RAIO_HITBOX 2.0f
-#define METEORO_RAIO_VISUAL 0.1f  // Raio adicional para visualização
+#define METEORO_RAIO_HITBOX 4.0f
+#define METEORO_RAIO_VISUAL 0.1f
 
-typedef struct 
+typedef struct
 {
     float x, y, z;
     float velocidade;
     int estado;
     float hitboxRaio;
+    GLuint idTextura;
+    GLuint idModelo;
 } Meteoro;
 
-// Inicializa um array de meteoros
-Meteoro* meteoros_init(int numMeteoros);
-
-// Atualiza a posição de todos os meteoros
+Meteoro* meteoros_init(int numMeteoros, const char* texturaPath, const char* modeloPath);
 void meteoros_update(Meteoro* vetor_meteoros, int numMeteoros, Player* p, float deltaTime);
-
-// Desenha um meteoro individual
 void meteoro_draw(Meteoro* m);
-
 void alvo_draw(Meteoro* m);
-
-// Reinicia um meteoro para uma nova posição
 void reinicia_meteoro(Meteoro* m);
 
 #endif
-
-
-

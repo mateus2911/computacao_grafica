@@ -10,7 +10,7 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
     p->x = 0.0f;
     p->z = 0.0f;
     p->rotY = 0.0f;
-    p->velocidade = 6.0f;
+    p->velocidade = 20.0f;
     p->rotVel = 180.0f;
     p->hitboxRaio = PLAYER_RAIO_HITBOX;
     

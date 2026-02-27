@@ -8,17 +8,21 @@
 extern Pontuacao gPontuacao;
 
 
-Meteoro * meteoros_init(int numMeteoros){
+Meteoro * meteoros_init(int numMeteoros, const char* texturaPath, const char* modeloPath){
 
     Meteoro * vetor_meteoros = (Meteoro *)malloc(numMeteoros * sizeof(Meteoro));
+    GLuint idTexturaMeteoro = carregaTextura(texturaPath);
+    GLuint idModeloMeteoro = carregar_Obj(modeloPath);
 
     for(int i = 0; i<numMeteoros; i++){
         vetor_meteoros[i].x = rand() % 100 - 50; //Posição aleatória entre -50 e 50
         vetor_meteoros[i].y = rand() % 50 + 10; //Posição aleatória entre 10 e 60
         vetor_meteoros[i].z = rand() % 100 - 50; //Posição aleatória entre -50 e 50
-        vetor_meteoros[i].velocidade = 4.8f;
+        vetor_meteoros[i].velocidade = 10.8f;
         vetor_meteoros[i].estado = 1; //Ativo
         vetor_meteoros[i].hitboxRaio = METEORO_RAIO_HITBOX;
+        vetor_meteoros[i].idTextura = idTexturaMeteoro;
+        vetor_meteoros[i].idModelo = idModeloMeteoro;
     }
 
     return vetor_meteoros;
@@ -54,17 +58,33 @@ void meteoro_draw(Meteoro* m){
     if(m->estado == 1){
         // Calcula a transparência com base na altura (float)
         float alpha = 1.0f - (m->y / 60.0f);
+        const float escalaModelo = 0.003f;
+        const float centroModeloX = 2.7262f;
+        const float centroModeloY = -1.51095f;
+        const float centroModeloZ = 700.3422f;
         if(alpha < 0.3f) alpha = 0.3f; // Alpha mínimo para visibilidade
         
         glPushMatrix();
 
             // Move para a posição X, Y, Z atual
             glTranslatef(m->x, m->y, m->z);
+            glScalef(escalaModelo, escalaModelo, escalaModelo);
+            glTranslatef(-centroModeloX, -centroModeloY, -centroModeloZ);
 
-            glColor3f(1.0f, 0.5f, 0.0f);    // Cor laranja/vermelha com transparência
+            // Desenha com textura
+            glEnable(GL_TEXTURE_2D);
+            glBindTexture(GL_TEXTURE_2D, m->idTextura);
+            glColor4f(1.0f, 1.0f, 1.0f, alpha); // Cor branca com transparência
+
+            glCallList(m->idModelo); // Chama a lista criada pelo fast_obj
+            glDisable(GL_TEXTURE_2D);
+
+            
+
+            //glColor4f(1.0f, 0.5f, 0.0f, alpha);    // Cor laranja/vermelha com transparência
         
             // Raio 2.0, 20 fatias, 20 pilhas
-            glutSolidSphere(m->hitboxRaio + METEORO_RAIO_VISUAL, 20, 20);
+            //glutSolidSphere(m->hitboxRaio + METEORO_RAIO_VISUAL, 20, 20);
 
             
 
@@ -180,7 +200,7 @@ void reinicia_meteoro(Meteoro* m){
     m->x = rand() % 100 - 50; //Posição aleatória entre -50 e 50
     m->y = rand() % 50 + 10; //Posição aleatória entre 10 e 60
     m->z = rand() % 100 - 50; //Posição aleatória entre -50 e 50
-    m->velocidade = 4.8f;
+    m->velocidade = m->velocidade + 0.5f; // Mantém a mesma velocidade
     m->estado = 1; //Ativo
 
 };
