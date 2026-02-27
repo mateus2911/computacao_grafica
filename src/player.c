@@ -10,8 +10,8 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
     p->x = 0.0f;
     p->z = 0.0f;
     p->rotY = 0.0f;
-    p->velocidade = 0.8f;
-    p->rotVel = 5.0f;
+    p->velocidade = 6.0f;
+    p->rotVel = 180.0f;
     p->hitboxRaio = PLAYER_RAIO_HITBOX;
     
     // Carrega assets
@@ -20,7 +20,7 @@ void player_init(Player* p, const char* texturaPath, const char* modeloPath) {
 }
 
 
-void player_update(Player* p, int* chaves, Scene* cena) {
+void player_update(Player* p, int* chaves, Scene* cena, float deltaTime) {
     float radianos = p->rotY * (PI / 180.0f);
 
 
@@ -28,24 +28,24 @@ void player_update(Player* p, int* chaves, Scene* cena) {
 
     // Movimento para frente (W)
     if (chaves['w']) {
-        p->x += sinf(radianos) * p->velocidade;
-        p->z += cosf(radianos) * p->velocidade;
+        p->x += sinf(radianos) * p->velocidade * deltaTime;
+        p->z += cosf(radianos) * p->velocidade * deltaTime;
     }
     
     // Movimento para trás (S)
     if (chaves['s']) {
-        p->x -= sinf(radianos) * p->velocidade;
-        p->z -= cosf(radianos) * p->velocidade;
+        p->x -= sinf(radianos) * p->velocidade * deltaTime;
+        p->z -= cosf(radianos) * p->velocidade * deltaTime;
     }
 
     // Rotação esquerda (A)
     if (chaves['a']) {
-        p->rotY += p->rotVel;
+        p->rotY += p->rotVel * deltaTime;
     }
 
     // Rotação direita (D)
     if (chaves['d']) {
-        p->rotY -= p->rotVel;
+        p->rotY -= p->rotVel * deltaTime;
     }
 
     if(p->x > cena->tamanho) p->x = cena->tamanho;
@@ -58,11 +58,22 @@ void player_update(Player* p, int* chaves, Scene* cena) {
 void player_draw(Player* p) {
     glPushMatrix();
 
-        // Move para a posição X, Z atual
-        glTranslatef(p->x, 0.0f, p->z);
+        // Ajustes de alinhamento do OBJ (comum quando o arquivo vem em Z-up)
+        const float yOffset = 0.5f;
+        const float alinhamentoEixoX = -90.0f;
+        const float escalaModelo = 0.35f;
+
+        // Move para a posição no terreno
+        glTranslatef(p->x, yOffset, p->z);
 
         // Gira o personagem (Rotação no eixo Y)
         glRotatef(p->rotY, 0.0f, 1.0f, 0.0f);
+
+        // Alinhamento Z-up
+        glRotatef(alinhamentoEixoX, 1.0f, 0.0f, 0.0f);
+
+        // Diminui o tamanho do modelo
+        glScalef(escalaModelo, escalaModelo, escalaModelo);
 
         // Desenha com textura
         glEnable(GL_TEXTURE_2D);

@@ -20,6 +20,7 @@ int gChaves[256];
 Meteoro* gVetorMeteoros;
 int gNumMeteoros = 10;
 Pontuacao gPontuacao;
+int gUltimoTempoMs = 0;
 
 
 // ============================================
@@ -30,8 +31,13 @@ Pontuacao gPontuacao;
 
 
 void display() {
+    int tempoAtualMs = glutGet(GLUT_ELAPSED_TIME);
+    float deltaTime = (tempoAtualMs - gUltimoTempoMs) / 1000.0f;
+    if (deltaTime > 0.1f) deltaTime = 0.1f;
+    gUltimoTempoMs = tempoAtualMs;
+
     // Atualiza a lógica do jogador
-    player_update(&gPlayer, gChaves, &gScene);
+    player_update(&gPlayer, gChaves, &gScene, deltaTime);
 
     // Limpa os buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -49,7 +55,7 @@ void display() {
 
 
     // Atualiza meteoros primeiro
-    meteoros_update(gVetorMeteoros, gNumMeteoros, &gPlayer);
+    meteoros_update(gVetorMeteoros, gNumMeteoros, &gPlayer, deltaTime);
     
     // Desenha os alvos no chão ANTES do terreno
     for (int i = 0; i < gNumMeteoros; i++) {
@@ -139,7 +145,7 @@ void init() {
     // Configuração de iluminação
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
-    glEnable(GL_RESCALE_NORMAL);// Normaliza normais após transformações
+    glEnable(GL_NORMALIZE);// Normaliza normais após transformações
     glEnable(GL_COLOR_MATERIAL);  // Permite usar glColor3f com iluminação
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     
@@ -159,7 +165,7 @@ void init() {
     glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
 
     // Inicializa os módulos
-    player_init(&gPlayer, "../personagem.jpg", "../personagem.obj");
+    player_init(&gPlayer, "../personagem.jpg", "../pato_borracha.obj");
     scene_init(&gScene, "../grama.jpg");
     camera_init(&gCamera);
     gVetorMeteoros = meteoros_init(gNumMeteoros);
@@ -185,6 +191,7 @@ int main(int argc, char** argv) {
 
     // Inicializa o jogo
     init();
+    gUltimoTempoMs = glutGet(GLUT_ELAPSED_TIME);
 
     // Registra callbacks
     glutKeyboardFunc(tecladoDown);

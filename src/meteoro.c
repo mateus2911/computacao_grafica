@@ -16,7 +16,7 @@ Meteoro * meteoros_init(int numMeteoros){
         vetor_meteoros[i].x = rand() % 100 - 50; //Posição aleatória entre -50 e 50
         vetor_meteoros[i].y = rand() % 50 + 10; //Posição aleatória entre 10 e 60
         vetor_meteoros[i].z = rand() % 100 - 50; //Posição aleatória entre -50 e 50
-        vetor_meteoros[i].velocidade = 0.8f; 
+        vetor_meteoros[i].velocidade = 4.8f;
         vetor_meteoros[i].estado = 1; //Ativo
         vetor_meteoros[i].hitboxRaio = METEORO_RAIO_HITBOX;
     }
@@ -140,11 +140,11 @@ void alvo_draw(Meteoro* m){
     }
 }
 
-void meteoros_update(Meteoro* vetor_meteoros, int numMeteoros, Player* p){
+void meteoros_update(Meteoro* vetor_meteoros, int numMeteoros, Player* p, float deltaTime){
 
     for(int i = 0; i<numMeteoros; i++){
         if(vetor_meteoros[i].estado == 1){
-            vetor_meteoros[i].y -= vetor_meteoros[i].velocidade * 0.1f; //Atualiza a posição Y do meteoro
+            vetor_meteoros[i].y -= vetor_meteoros[i].velocidade * deltaTime;
 
             //Verifica colisão com o jogador
             float raioSoma = vetor_meteoros[i].hitboxRaio + p->hitboxRaio;
@@ -180,7 +180,7 @@ void reinicia_meteoro(Meteoro* m){
     m->x = rand() % 100 - 50; //Posição aleatória entre -50 e 50
     m->y = rand() % 50 + 10; //Posição aleatória entre 10 e 60
     m->z = rand() % 100 - 50; //Posição aleatória entre -50 e 50
-    m->velocidade = 0.8f; 
+    m->velocidade = 4.8f;
     m->estado = 1; //Ativo
 
 };

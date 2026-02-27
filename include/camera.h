@@ -7,6 +7,9 @@ typedef struct {
     int modo;           // 0 = visão de cima, 1 = terceira pessoa
     float distancia;    // Distância da câmera ao jogador (modo 1)
     float altura;       // Altura da câmera
+    float suavizacao;   // Quanto maior, mais rápido aproxima da posição-alvo
+    float camX, camY, camZ;
+    int inicializada;
 } Camera;
 
 // Inicializa a câmera com valores padrão

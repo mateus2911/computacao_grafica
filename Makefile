@@ -2,8 +2,8 @@
 # Alternativa ao CMake para compilação manual
 
 CC = gcc
-CFLAGS = -Wall -g -I./include
-LDFLAGS = -lGL -lGLU -lglut -lm
+CFLAGS = -Wall -g -I./include -I./freeglut/include
+LDFLAGS = -L./freeglut/lib/x64 -lfreeglut -lopengl32 -lglu32 -lgdi32 -lwinmm -lm
 
 # Diretórios
 SRC_DIR = src
@@ -27,7 +27,7 @@ all: $(BUILD_DIR) $(TARGET)
 
 # Cria diretório build se não existir
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
 
 # Linka o executável
 $(TARGET): $(OBJECTS)
@@ -39,11 +39,12 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 # Executa o jogo
 run: all
-	cd $(BUILD_DIR) && ./Meteor_Runner
+	cd $(BUILD_DIR) && set PATH=..\freeglut\bin\x64;%PATH% && Meteor_Runner.exe
 
 # Limpa arquivos compilados
 clean:
-	rm -rf $(BUILD_DIR)/*.o $(TARGET)
+	if exist $(BUILD_DIR)\*.o del /Q $(BUILD_DIR)\*.o
+	if exist $(TARGET).exe del /Q $(TARGET).exe
 
 # Rebuild completo
 rebuild: clean all

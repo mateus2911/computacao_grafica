@@ -6,9 +6,14 @@
 
 
 void camera_init(Camera* c) {
-    c->modo = 0;
-    c->distancia = 8.0f;
-    c->altura = 4.0f;
+    c->modo = 1;
+    c->distancia = 16.0f;
+    c->altura = 8.0f;
+    c->suavizacao = 10.0f;
+    c->camX = 0.0f;
+    c->camY = c->altura;
+    c->camZ = 0.0f;
+    c->inicializada = 0;
 }
 
 
@@ -28,15 +33,39 @@ void camera_aplicar(Camera* c, Player* p) {
     } else {
         // Modo 1: Terceira pessoa (segue o jogador)
         float radianos = p->rotY * (PI / 180.0f);
+        const float lookAhead = 2.0f;
+
+        static int ultimoTempoMs = 0;
+        int tempoAtualMs = glutGet(GLUT_ELAPSED_TIME);
+        float deltaTime = (tempoAtualMs - ultimoTempoMs) / 1000.0f;
+        if (deltaTime < 0.0f) deltaTime = 0.0f;
+        if (deltaTime > 0.1f) deltaTime = 0.1f;
+        ultimoTempoMs = tempoAtualMs;
         
         // Calcula posição da câmera atrás do jogador
-        float camX = p->x - sinf(radianos) * c->distancia;
-        float camZ = p->z - cosf(radianos) * c->distancia;
-        float camY = c->altura;
+        float alvoCamX = p->x - sinf(radianos) * c->distancia;
+        float alvoCamZ = p->z - cosf(radianos) * c->distancia;
+        float alvoCamY = c->altura;
+
+        if (!c->inicializada) {
+            c->camX = alvoCamX;
+            c->camY = alvoCamY;
+            c->camZ = alvoCamZ;
+            c->inicializada = 1;
+        }
+
+        float fator = 1.0f - expf(-c->suavizacao * deltaTime);
+        c->camX += (alvoCamX - c->camX) * fator;
+        c->camY += (alvoCamY - c->camY) * fator;
+        c->camZ += (alvoCamZ - c->camZ) * fator;
+
+        float alvoX = p->x + sinf(radianos) * lookAhead;
+        float alvoY = 2.0f;
+        float alvoZ = p->z + cosf(radianos) * lookAhead;
 
         gluLookAt(
-            camX, camY, camZ,           // Posição da câmera
-            p->x, 2.0f, p->z,           // Olha para o jogador (um pouco acima do chão)
+            c->camX, c->camY, c->camZ,  // Posição da câmera suavizada
+            alvoX, alvoY, alvoZ,        // Olha para frente do jogador
             0.0f, 1.0f, 0.0f            // Vetor UP
         );
     }
